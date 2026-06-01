@@ -1,7 +1,11 @@
 import tkinter as tk
 import os
 from PIL import Image, ImageTk
+import sys
+import os
 
+def resource_path(path):
+    return os.path.join(sys._MEIPASS, path) if hasattr(sys, "_MEIPASS") else path
 class CatPet:
     def __init__(self, root):
         self.root = root
@@ -25,7 +29,11 @@ class CatPet:
         self.canvas.pack()
 
         # 猫咪图片列表
-        self.cat_images = ["猫1.png", "猫2.png", "猫3.png"]
+        self.cat_images = [
+            resource_path("猫1.png"),
+            resource_path("猫2.png"),
+            resource_path("猫3.png")
+        ]
         self.current_cat_index = 0
         self.cat_photo = None
 
